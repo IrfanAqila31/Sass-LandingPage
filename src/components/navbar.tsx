@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,9 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 ">
-      {/* Container Utama */}
+      {/* Container*/}
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* --- BAGIAN KIRI: LOGO --- */}
+        {/* ---LOGO START --- */}
         <div className="flex-1 flex items-center">
           <div className="flex items-center gap-2 cursor-pointer">
             {/* <div className="w-8 h-8 bg-blue-600 rounded-lg"></div> */}
@@ -22,6 +23,7 @@ const Navbar = () => {
             </span>
           </div>
         </div>
+        {/* ---LOGO END --- */}
 
         {/* --- BAGIAN TENGAH: MENU (Desktop) START --- */}
         <div className="hidden md:flex flex-1 justify-center items-center gap-8">
@@ -40,7 +42,7 @@ const Navbar = () => {
         {/* --- BAGIAN KANAN: ACTION BUTTON & HAMBURGER START--- */}
         <div className="flex-1 flex justify-end items-center gap-4">
           {/* Button ini hanya muncul di Desktop (md ke atas) */}
-          <button className="hidden md:block bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-full text-sm font-bold transition cursor-pointer active:scale-95">
+          <button className="hidden md:block bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition duration-300 cursor-pointer active:scale-95">
             Get Started
           </button>
           {/* --- BAGIAN KANAN: ACTION BUTTON & HAMBURGER END--- */}
@@ -48,38 +50,44 @@ const Navbar = () => {
           {/* Tombol Hamburger (Hanya muncul di Mobile) START */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none cursor-pointer"
+            className="md:hidden p-2 text-slate-600 hover:text-blue-600 transition duration-300 focus:outline-none cursor-pointer"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              )}
-            </svg>
+            <div className="relative w-6 h-6">
+              <Menu
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isOpen
+                    ? "rotate-90 scale-0 opacity-0"
+                    : "rotate-0 scale-100 opacity-100"
+                }`}
+              />
+              <X
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isOpen
+                    ? "rotate-0 scale-100 opacity-100"
+                    : "-rotate-90 scale-0 opacity-0"
+                }`}
+              />
+            </div>
           </button>
         </div>
       </div>
       {/* Tombol Hamburger (Hanya muncul di Mobile) END */}
 
+      {/* --- OVERLAY KLIK DI LUAR MENU (MOBILE) --- */}
+      <div 
+        className={`md:hidden fixed inset-x-0 bottom-0 top-16 bg-slate-900/10 backdrop-blur-xs z-40 transition-opacity duration-300 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+
       {/* --- MENU MOBILE DROPDOWN START --- */}
-      {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-white border-b border-slate-200 p-6 flex flex-col gap-4 shadow-xl animate-in fade-in slide-in-from-top-2">
+      <div 
+        className={`md:hidden absolute top-16 left-0 w-full bg-white shadow-xl overflow-hidden transition-all duration-300 ease-in-out z-50 ${
+          isOpen ? "max-h-[400px] opacity-100 border-b border-slate-200" : "max-h-0 opacity-0 border-transparent"
+        }`}
+      >
+        <div className="p-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -91,11 +99,11 @@ const Navbar = () => {
             </a>
           ))}
           <hr className="border-slate-100" />
-          <button className="w-max px-5 text-sm bg-linear-to-r from-blue-600 to-indigo-600 text-white py-2 rounded-xl font-bold shadow-lg shadow-blue-200 active:scale-95 cursor-pointer">
+          <button className="w-max px-5 text-sm bg-linear-to-r from-blue-600 to-indigo-600 text-white py-2 rounded-xl font-bold hover:opacity-90 transition duration-300 active:scale-95 cursor-pointer">
             Get Started
           </button>
         </div>
-      )}
+      </div>
       {/* --- MENU MOBILE DROPDOWN END --- */}
     </nav>
   );
