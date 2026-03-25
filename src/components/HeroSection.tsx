@@ -1,4 +1,4 @@
-import dashboard from "../assets/dashboard.png";
+import dashboard from "../assets/dashboard.webp";
 const HeroSection = () => {
   return (
     <section id="home" className="pt-32 pb-20 px-6 text-center">
