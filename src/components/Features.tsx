@@ -3,8 +3,8 @@ import FeatureCard from "./FeatureCard";
 
 const Features = () => {
   return (
-    <section className="py-20 px-6 text-center bg-linear-to-b from-white to-slate-100">
-        
+    <section id="features" className="py-26 px-6 text-center bg-linear-to-b from-white to-slate-100">
+    
       <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
         Powerful Features to Boost Your Workflow
       </h2>

@@ -2,7 +2,7 @@ import PricingCard from "./PricingCard";
 
 const Pricing = () => {
   return (
-    <section className="py-20 px-6 text-center bg-white">
+    <section id="pricing" className="py-26 px-6 text-center bg-white">
       <h2 className="text-3xl md:text-4xl  font-bold text-slate-900">
         Simple, Transparent Pricing
       </h2>

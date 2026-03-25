@@ -1,7 +1,7 @@
-import dashboard from "../assets/dashboard.jpg";
+import dashboard from "../assets/dashboard.png";
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 px-6 text-center">
+    <section id="home" className="pt-32 pb-20 px-6 text-center">
       <span className="mb-4 inline-block px-4 py-1 text-sm bg-blue-100 text-blue-600 rounded-full">
         🚀 New: Smart workflow automation
       </span>

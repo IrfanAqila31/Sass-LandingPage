@@ -17,9 +17,9 @@ const PricingCard = ({
 }: Props) => {
   return (
     <div
-      className={`relative p-8 rounded-2xl border shadow-sm ${
+      className={`relative p-8 rounded-2xl border shadow-sm  ${
         popular
-          ? "bg-blue-600 text-white border-blue-600 scale-105"
+          ? "bg-linear-to-r from-blue-600 to-indigo-600 text-white border-blue-600 scale-105"
           : "bg-white border-slate-200"
       }`}
     >

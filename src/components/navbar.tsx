@@ -5,9 +5,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { name: "Home", href: "#home" },
     { name: "Features", href: "#features" },
-    { name: "Solutions", href: "#solutions" },
     { name: "Pricing", href: "#pricing" },
+    { name: "Testimonials", href: "#testimonials" },
   ];
 
   return (
@@ -74,17 +75,21 @@ const Navbar = () => {
       {/* Tombol Hamburger (Hanya muncul di Mobile) END */}
 
       {/* --- OVERLAY KLIK DI LUAR MENU (MOBILE) --- */}
-      <div 
+      <div
         className={`md:hidden fixed inset-x-0 bottom-0 top-16 bg-slate-900/10 backdrop-blur-xs z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* --- MENU MOBILE DROPDOWN START --- */}
-      <div 
+      <div
         className={`md:hidden absolute top-16 left-0 w-full bg-white shadow-xl overflow-hidden transition-all duration-300 ease-in-out z-50 ${
-          isOpen ? "max-h-[400px] opacity-100 border-b border-slate-200" : "max-h-0 opacity-0 border-transparent"
+          isOpen
+            ? "max-h-[400px] opacity-100 border-b border-slate-200"
+            : "max-h-0 opacity-0 border-transparent"
         }`}
       >
         <div className="p-6 flex flex-col gap-4">
